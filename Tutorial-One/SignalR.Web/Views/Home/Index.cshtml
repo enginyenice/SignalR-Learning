@@ -95,7 +95,10 @@
                 $(`#${listName}`).append(`<li class="list-group-item">${name}</li>`);
 
             })
+            connection.on("ReseiveProduct", (product) => {
 
+                console.log(product);
+            })
             //Clicks
             $("#btnNameSave").click(() => {
                 connection.invoke("SetName", $("#txtName").val()).catch((err) => {
@@ -113,6 +116,11 @@
                     console.log(err);
                 })
             });
+            $("#btnProduct").click(() => {
+                let product = { "Id": 1, "Name": "Kalem", "Price": 100, "Stock": 200 };
+                connection.invoke("SendProduct", product);
+
+            })
             $("input[type=radio]").change(() => {
                 let value = $(`input[type=radio]:checked`).val();
                 if (value == "Team A") {
@@ -166,7 +174,8 @@
 <div class="row  mt-2">
     <div class="col col-8 offset-2">
         <button class="btn btn-primary" id="btnNameSave">İsim Kaydet</button>
-        <button class="btn btn-primary" id="btnNameTeam">İsim Kaydet(Takım)</button>
+        <button class="btn btn-success" id="btnNameTeam">İsim Kaydet(Takım)</button>
+        <button class="btn btn-warning" id="btnProduct">Ürün Gönder</button>
     </div>
 </div>
 

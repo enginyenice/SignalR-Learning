@@ -25,6 +25,13 @@ namespace SignalR.API.Hubs
             _context = context;
         }
 
+
+        public async Task SendProduct(Product p)
+        {
+            await Clients.All.SendAsync("ReseiveProduct", p);
+
+        }
+
         public async Task SetName(string name)
         {
             if (Names.Count >= MyHub.TeamCount)
