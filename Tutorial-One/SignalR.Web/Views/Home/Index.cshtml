@@ -10,31 +10,55 @@
 
             //var connection = new signalR.HubConnectionBuilder().configureLogging(signalR.LogLevel.Information).withAutomaticReconnect().withUrl("https://localhost:5001/MyHub").build();
             var connection = new signalR.HubConnectionBuilder().withAutomaticReconnect([1000,2000,2000,2000]).withUrl("https://localhost:5001/MyHub").build();
-            $("#conStatus").text(connection.connectionState);
-            connection.start()
-                .then(() => {
-                    $("#loading").hide();
-                    $("#conStatus").text(connection.connectionState);
-                })
-                .catch((err) => { console.log(err) });
+            function statusShow() {
+                $("#conStatus").text(connection.connectionState);
+            }
+            start();
+            statusShow();
+            //functions
+            function start() {
+                connection.start()
+                    .then(() => {
+                        $("#loading").hide();
+                        statusShow();
+                    })
+                    .catch((err) => {
+                        console.log(err)
+                        setTimeout(() => { Start() }, 2000);
+                    });
+
+            }
+
+
+
+
+
+
             
+
+            
+
+
+
+
+
             //onreconnecting
             connection.onreconnecting(err => {
                 $("#loading").show();
-                $("#conStatus").text(connection.connectionState);
                 console.log("onreconnection: "+err);
             });
             //onreconnected
             connection.onreconnected((connectionId) => {
                 $("#loading").hide();
-                $("#conStatus").text(connection.connectionState);
+                statusShow();
                 console.log("connectionId: " + connectionId);
             });
 
             //onclose
             connection.onclose(() => {
                 $("#loading").show();
-                $("#conStatus").text(connection.connectionState);
+                statusShow();
+                start();
             })
 
 
