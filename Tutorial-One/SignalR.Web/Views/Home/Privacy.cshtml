@@ -4,3 +4,21 @@
 <h1>@ViewData["Title"]</h1>
 
 <p>Use this page to detail your site's privacy policy.</p>
+@section Scripts {
+    <script src="~/lib/microsoft/signalr/dist/browser/signalr.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var connection = new signalR.HubConnectionBuilder().withAutomaticReconnect([1000, 2000, 2000, 2000]).withUrl("/MyHub").build();
+
+            connection.start().then(() => {
+                console.log(connection.connectionState);
+                connection.invoke("SendMessage","ilk mesaj");
+            }).catch((err) => { console.log(err) });
+
+            connection.on("ReseiveMessage", (message) => {
+                console.log(message);
+            })
+        });
+    </script>
+}
