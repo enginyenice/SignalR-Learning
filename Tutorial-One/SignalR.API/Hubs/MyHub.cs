@@ -12,6 +12,8 @@ namespace SignalR.API.Hubs
         All => Tüm clientlara mesaj göndermek
         Caller => Sadece istek yapan cliente mesaj göndermek
         Group => Group olarak clienlara mesaj göndermek
+        ---------------------------------------------------
+
      */
     public class MyHub : Hub
     {
