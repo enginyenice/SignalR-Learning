@@ -59,10 +59,15 @@
                 statusShow();
                 start();
             })
-
+            //Client Count
             connection.on("ReceiveClientCount", (clientCount) => {
                 $("#clientCount").text(clientCount);
             });
+            //Notify
+            connection.on("Notify", (countText) => {
+                console.log(countText);
+                $("#notify").html(`<div class="alert alert-danger">${countText}</div"`);
+            })
 
 
             //Clicks
@@ -99,11 +104,18 @@
         </div>
     </div>
 </div>
+<hr />
 <div class="row">
     <div class="col col-8 offset-2">
         <input class="form-control" type="text" id="txtName" />
         <hr />
         <button class="btn btn-primary" id="btnNameSave">İsim Kaydet</button>
+    </div>
+</div>
+<hr />
+<div class="row">
+    <div class="col col-8 offset-2">
+        <div id="notify"></div>
     </div>
 </div>
 <hr />
