@@ -29,18 +29,6 @@
 
             }
 
-
-
-
-
-
-            
-
-            
-
-
-
-
             //Subscribe
             //onreconnecting
             connection.onreconnecting(err => {
@@ -67,6 +55,9 @@
             connection.on("Notify", (countText) => {
                 console.log(countText);
                 $("#notify").html(`<div class="alert alert-danger">${countText}</div"`);
+            })
+            connection.on("Error", (errorText) => {
+                alert(errorText);
             })
 
 

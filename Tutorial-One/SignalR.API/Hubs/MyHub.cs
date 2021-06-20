@@ -10,10 +10,19 @@ namespace SignalR.API.Hubs
     {
         private static List<String> Names { get; set; } = new List<string>();
         private static int ClientCount { get; set; } = 0;
+        public static int TeamCount { get; set; } = 7;
         public async Task SetName(string name)
         {
-            MyHub.Names.Add(name);
-            await Clients.All.SendAsync(method:"ReceiveName",arg1:name);
+            if(Names.Count >= MyHub.TeamCount)
+            {
+                await Clients.Caller.SendAsync(method:"Error",$"Takım en fazla {MyHub.TeamCount} kişi olabilir");
+            } else
+            {
+                MyHub.Names.Add(name);
+                await Clients.All.SendAsync(method: "ReceiveName", arg1: name);
+            }
+
+
         }
         public async Task GetNames()
         {
