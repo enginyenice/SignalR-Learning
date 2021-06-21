@@ -13,6 +13,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tutorial-Two", "Tutorial-Tw
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalR.Covid19Chart.API", "Tutorial-Two\SignalR.Covid19Chart.API\SignalR.Covid19Chart.API.csproj", "{26E3259D-CB02-4E75-B2E0-C88BB92EA583}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalR.Covid19Chart.Web", "Tutorial-Two\SignalR.Covid19Chart.Web\SignalR.Covid19Chart.Web.csproj", "{38692FA8-2EDF-4C57-9E85-B138972D70CA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,10 @@ Global
 		{26E3259D-CB02-4E75-B2E0-C88BB92EA583}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{26E3259D-CB02-4E75-B2E0-C88BB92EA583}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{26E3259D-CB02-4E75-B2E0-C88BB92EA583}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38692FA8-2EDF-4C57-9E85-B138972D70CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38692FA8-2EDF-4C57-9E85-B138972D70CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38692FA8-2EDF-4C57-9E85-B138972D70CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38692FA8-2EDF-4C57-9E85-B138972D70CA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -39,6 +45,7 @@ Global
 		{9DBC972E-2D31-4CE5-8127-8CEFCB952378} = {D2BCDEFF-1C89-411B-AB39-C38C3C654C38}
 		{9269C3FF-A154-47C8-931E-0BDCCB4ADD49} = {D2BCDEFF-1C89-411B-AB39-C38C3C654C38}
 		{26E3259D-CB02-4E75-B2E0-C88BB92EA583} = {B39AE11F-9672-4417-9DA6-99CEABD42801}
+		{38692FA8-2EDF-4C57-9E85-B138972D70CA} = {B39AE11F-9672-4417-9DA6-99CEABD42801}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FAF38BE3-B237-4787-8437-119761EAEA60}
