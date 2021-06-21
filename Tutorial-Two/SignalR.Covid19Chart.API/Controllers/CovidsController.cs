@@ -22,18 +22,19 @@ namespace SignalR.Covid19Chart.API.Controllers
         public async Task<IActionResult> SaveCovid(Covid covid)
         {
             await _covidService.SaveCovid(covid);
-            IQueryable<Covid> covidList = _covidService.GetList();
-            return Ok(covidList);
+            //IQueryable<Covid> covidList = _covidService.GetList();
+            return Ok(_covidService.GetCovidChartList());
         }
         [HttpGet]
         public IActionResult InitializeCovid()
         {
             Random rnd = new Random();
-            Enumerable.Range(1, 50).ToList().ForEach(p =>
+            Enumerable.Range(1, 10).ToList().ForEach(p =>
             {
                 foreach (ECity city in Enum.GetValues(typeof(ECity)))
                 {
-                    var newCovid = new Covid() { City = city, Count = rnd.Next(100, 1000), CovidDate = DateTime.Now.AddDays(p) };
+                    var newCovid = new Covid() 
+                    { City = city, Count = rnd.Next(100, 1000), CovidDate = DateTime.Now.AddDays(p) };
 
                     _covidService.SaveCovid(newCovid).Wait();
                     System.Threading.Thread.Sleep(1000);
