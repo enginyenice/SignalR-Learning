@@ -32,7 +32,7 @@ namespace SignalR.Covid19Chart.API
             {
                 options.AddPolicy("CorsPolicy", builder =>
                 {
-                    builder.WithOrigins("https://localhost:44390").AllowAnyHeader().AllowAnyMethod().AllowCredentials();
+                    builder.WithOrigins("https://localhost:44390", "http://localhost:4200").AllowAnyHeader().AllowAnyMethod().AllowCredentials();
                 });
             });
 
