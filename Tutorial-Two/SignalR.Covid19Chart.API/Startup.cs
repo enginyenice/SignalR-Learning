@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using SignalR.Covid19Chart.API.Hubs;
 using SignalR.Covid19Chart.API.Models;
 using System;
 using System.Collections.Generic;
@@ -31,6 +32,7 @@ namespace SignalR.Covid19Chart.API
             {
                 options.UseSqlServer(Configuration.GetConnectionString("SqlServer"));
             });
+            services.AddSignalR();
             services.AddControllers();
         }
 
@@ -50,7 +52,9 @@ namespace SignalR.Covid19Chart.API
 
             app.UseEndpoints(endpoints =>
             {
+                
                 endpoints.MapControllers();
+                endpoints.MapHub<CovidHub>("/CovidHub");
             });
         }
     }
